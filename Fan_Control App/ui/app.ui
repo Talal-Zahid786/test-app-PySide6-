@@ -491,7 +491,10 @@ background-color: rgba(134, 152, 169, 220);
                 </rect>
                </property>
                <property name="autoFillBackground">
-                <bool>true</bool>
+                <bool>false</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(134, 152, 169);</string>
                </property>
                <property name="text">
                 <string/>
@@ -609,7 +612,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
                </property>
                <property name="text">
-                <string>Volts</string>
+                <string>Temp</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -635,7 +638,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
                </property>
                <property name="text">
-                <string>V</string>
+                <string>°C</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -648,9 +651,9 @@ color: rgb(255, 255, 255);</string>
               <zorder>arc1_current_value</zorder>
               <zorder>arc1_label1</zorder>
               <zorder>arc1_label2</zorder>
+              <zorder>arc1_body</zorder>
               <zorder>label</zorder>
               <zorder>arc1_max_value</zorder>
-              <zorder>arc1_body</zorder>
               <zorder>arc1_min_value</zorder>
              </widget>
             </item>

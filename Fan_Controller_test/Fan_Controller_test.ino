@@ -41,6 +41,23 @@ void setFanSpeed() {
   server.send(200, "application/json", "{\"status\":\"ok\"}");
 }
 
+void sendReadings() {
+
+    StaticJsonDocument<256> doc;
+
+    // Simulated meter values
+    doc["temperature"] = random(0, 100);     // °C
+    doc["voltage"] = random(0, 330);       // V
+    doc["current"] = random(0, 30);          // A
+    doc["power"] = random(0, 800);          // KW
+    doc["energy"] = random(50, 1000);         // KWh
+
+    char jsonString[256];
+    serializeJson(doc, jsonString, sizeof(jsonString));
+    server.send(200, "application/json", jsonString);
+    Serial.println("Data Sent");
+}
+
 void TaskCode1(void *parameter) {
   while (true) {
     if(WiFi.isConnected())
@@ -65,6 +82,7 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   server.on("/fan-speed", HTTP_POST, setFanSpeed);
+  server.on("/meters", HTTP_GET, sendReadings);
   server.begin();
   xTaskCreatePinnedToCore(
     TaskCode1,
