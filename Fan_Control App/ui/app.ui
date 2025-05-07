@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>839</width>
+    <width>879</width>
     <height>657</height>
    </rect>
   </property>
@@ -23,7 +23,9 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(134, 152, 169);</string>
+   <string notr="true">background-color: rgb(134, 152, 169);
+background-color: rgba(134, 152, 169, 220);
+</string>
   </property>
   <property name="tabShape">
    <enum>QTabWidget::TabShape::Rounded</enum>
@@ -31,7 +33,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="previous_page">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -43,6 +45,12 @@
         <width>36</width>
         <height>50</height>
        </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
       </property>
       <property name="text">
        <string>‎ </string>
@@ -214,6 +222,15 @@
                  <height>231</height>
                 </rect>
                </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
                </property>
@@ -294,6 +311,12 @@
        </layout>
       </widget>
       <widget class="QWidget" name="power_monitor">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout">
@@ -467,6 +490,9 @@
                  <height>20</height>
                 </rect>
                </property>
+               <property name="autoFillBackground">
+                <bool>true</bool>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -499,7 +525,7 @@
                 <pixmap>../assests/arc_body.png</pixmap>
                </property>
                <property name="scaledContents">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
               </widget>
               <widget class="QLabel" name="arc1_val1">
@@ -536,13 +562,95 @@
                 <set>Qt::AlignmentFlag::AlignCenter</set>
                </property>
               </widget>
+              <widget class="QLabel" name="arc1_current_value">
+               <property name="geometry">
+                <rect>
+                 <x>44</x>
+                 <y>55</y>
+                 <width>62</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>20</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(85, 255, 127);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc1_label1">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>82</y>
+                 <width>51</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>Volts</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc1_label2">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>40</y>
+                 <width>51</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>V</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
               <zorder>arc1_val3</zorder>
               <zorder>arc1_val2</zorder>
               <zorder>arc1_mid_value</zorder>
-              <zorder>arc1_body</zorder>
               <zorder>arc1_val1</zorder>
+              <zorder>arc1_current_value</zorder>
+              <zorder>arc1_label1</zorder>
+              <zorder>arc1_label2</zorder>
               <zorder>label</zorder>
               <zorder>arc1_max_value</zorder>
+              <zorder>arc1_body</zorder>
               <zorder>arc1_min_value</zorder>
              </widget>
             </item>
@@ -576,6 +684,22 @@
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>5</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
             <item>
              <widget class="QWidget" name="widget_3" native="true">
               <property name="sizePolicy">
@@ -657,7 +781,7 @@
                <property name="geometry">
                 <rect>
                  <x>50</x>
-                 <y>10</y>
+                 <y>7</y>
                  <width>49</width>
                  <height>16</height>
                 </rect>
@@ -697,10 +821,117 @@
                 <set>Qt::AlignmentFlag::AlignCenter</set>
                </property>
               </widget>
+              <widget class="QLabel" name="arc5_current_value">
+               <property name="geometry">
+                <rect>
+                 <x>44</x>
+                 <y>55</y>
+                 <width>62</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>20</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(85, 255, 127);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc5_label1">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>82</y>
+                 <width>51</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>Volts</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc5_label5">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>40</y>
+                 <width>51</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>V</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>5</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QWidget" name="widget_4" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>150</height>
+               </size>
+              </property>
               <widget class="QLabel" name="arc4_body">
                <property name="geometry">
                 <rect>
@@ -774,7 +1005,7 @@
                <property name="geometry">
                 <rect>
                  <x>50</x>
-                 <y>10</y>
+                 <y>7</y>
                  <width>49</width>
                  <height>16</height>
                 </rect>
@@ -802,10 +1033,117 @@
                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
+              <widget class="QLabel" name="arc4_current_value">
+               <property name="geometry">
+                <rect>
+                 <x>44</x>
+                 <y>55</y>
+                 <width>62</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>20</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(85, 255, 127);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc4_label1">
+               <property name="geometry">
+                <rect>
+                 <x>52</x>
+                 <y>82</y>
+                 <width>51</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>Amps</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc4_label2">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>40</y>
+                 <width>51</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>A</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>5</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QWidget" name="widget_5" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>150</height>
+               </size>
+              </property>
               <widget class="QLabel" name="arc3_needle">
                <property name="geometry">
                 <rect>
@@ -895,7 +1233,7 @@
                <property name="geometry">
                 <rect>
                  <x>50</x>
-                 <y>10</y>
+                 <y>7</y>
                  <width>49</width>
                  <height>16</height>
                 </rect>
@@ -907,10 +1245,128 @@
                 <set>Qt::AlignmentFlag::AlignCenter</set>
                </property>
               </widget>
+              <widget class="QLabel" name="arc3_current_value">
+               <property name="geometry">
+                <rect>
+                 <x>44</x>
+                 <y>55</y>
+                 <width>62</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>20</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(85, 255, 127);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc3_label1">
+               <property name="geometry">
+                <rect>
+                 <x>52</x>
+                 <y>82</y>
+                 <width>51</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>Power</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc3_label2">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>40</y>
+                 <width>51</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>KW</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <zorder>arc3_min_value</zorder>
+              <zorder>arc3_max_value</zorder>
+              <zorder>arc3_body</zorder>
+              <zorder>arc3_mid_value</zorder>
+              <zorder>arc3_needle</zorder>
+              <zorder>arc3_current_value</zorder>
+              <zorder>arc3_label1</zorder>
+              <zorder>arc3_label2</zorder>
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_8">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>5</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QWidget" name="widget_6" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>150</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
               <widget class="QLabel" name="arc2_needle">
                <property name="geometry">
                 <rect>
@@ -949,7 +1405,7 @@
                <property name="geometry">
                 <rect>
                  <x>50</x>
-                 <y>10</y>
+                 <y>7</y>
                  <width>49</width>
                  <height>16</height>
                 </rect>
@@ -1024,12 +1480,128 @@
                 <set>Qt::AlignmentFlag::AlignCenter</set>
                </property>
               </widget>
+              <widget class="QLabel" name="arc2_current_value">
+               <property name="geometry">
+                <rect>
+                 <x>44</x>
+                 <y>55</y>
+                 <width>62</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>20</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(85, 255, 127);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc2_label1">
+               <property name="geometry">
+                <rect>
+                 <x>52</x>
+                 <y>82</y>
+                 <width>51</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>Energy</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="arc2_label2">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>40</y>
+                 <width>51</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>KWh</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+              <zorder>arc2_mid_value</zorder>
+              <zorder>arc2_max_value</zorder>
+              <zorder>arc2_min_value</zorder>
+              <zorder>arc2_body</zorder>
+              <zorder>arc2_needle</zorder>
+              <zorder>arc2_current_value</zorder>
+              <zorder>arc2_label1</zorder>
+              <zorder>arc2_label2</zorder>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_9">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>5</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>
           <item>
            <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_5">
             <property name="orientation">
              <enum>Qt::Orientation::Vertical</enum>
             </property>
@@ -1050,7 +1622,7 @@
     <item>
      <widget class="QPushButton" name="next_page">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -1066,6 +1638,17 @@
         <width>36</width>
         <height>50</height>
        </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::RightToLeft</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-color: rgba(255, 255, 255, 0);
+selection-color: rgba(255, 255, 255, 0);
+gridline-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
        <string>‎ </string>

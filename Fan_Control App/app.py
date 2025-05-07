@@ -36,7 +36,7 @@ def rotate_fan_blade():
     print("Entered")
     transform = QTransform().rotate(angle1)
     rotated_pixmap = blade.transformed(transform, Qt.SmoothTransformation)
-    fan_controller_window.fan_blade.setPixmap(rotated_pixmap)
+    MainWindow.fan_blade.setPixmap(rotated_pixmap)
     angle1 = (angle1 - 20) % 360 
 
 
@@ -45,10 +45,10 @@ def fan_button_click():
     print("Button Clicked")
     [fan_status,error] = toggle_fan_status()
     if (error == 0):
-        fan_controller_window.fan_body.setEnabled(fan_status)
-        fan_controller_window.fan_blade.setEnabled(fan_status)
+        MainWindow.fan_body.setEnabled(fan_status)
+        MainWindow.fan_blade.setEnabled(fan_status)
         if fan_status:
-            timer1.start(1000-(fan_controller_window.dial.value()*0.45))
+            timer1.start(1000-(MainWindow.dial.value()*0.45))
         else:
             timer1.stop()
     elif (error == -1):
@@ -60,16 +60,16 @@ def fan_button_click():
     
 def fan_speed_control():
     global interval_ms,error
-    interval_ms = fan_controller_window.dial.value()
+    interval_ms = MainWindow.dial.value()
     timer1.setInterval(135-(interval_ms*0.45))
     error = setFanSpeed(interval_ms)
 
 def get_ip():
     ip = nslookup("fan-controller")
     if (ip!=""):
-        fan_controller_window.ip_label.setText(ip)
+        MainWindow.ip_label.setText(ip)
     else:
-        fan_controller_window.ip_label.setText("")
+        MainWindow.ip_label.setText("")
         show_error_popup("Error: Unable to find Device")
 
 def rotate_arc_bar():
@@ -77,27 +77,30 @@ def rotate_arc_bar():
     transform2 = QTransform().rotate(angle2)
     rotated_pixmap2 = arc1_val.transformed(transform2, Qt.SmoothTransformation)
     rotated_needle = arc_needle.transformed(transform2, Qt.SmoothTransformation)
-    power_monitor_window.arc1_val1.setPixmap(rotated_pixmap2)
-    set_arc_value(power_monitor_window.arc5_needle,power_monitor_window.arc5_min_value,power_monitor_window.arc5_mid_value,power_monitor_window.arc5_max_value,100*angle2//270,0,100)
-    set_arc_value(power_monitor_window.arc4_needle,power_monitor_window.arc4_min_value,power_monitor_window.arc4_mid_value,power_monitor_window.arc4_max_value,150*angle2//270,0,150)
-    set_arc_value(power_monitor_window.arc3_needle,power_monitor_window.arc3_min_value,power_monitor_window.arc3_mid_value,power_monitor_window.arc3_max_value,180*angle2//270,0,180)
-    set_arc_value(power_monitor_window.arc2_needle,power_monitor_window.arc2_min_value,power_monitor_window.arc2_mid_value,power_monitor_window.arc2_max_value,1000*angle2//270,50,1000)
-    # power_monitor_window.arc5_needle.setPixmap(rotated_needle)
-    # power_monitor_window.arc4_needle.setPixmap(rotated_needle)
-    # power_monitor_window.arc3_needle.setPixmap(rotated_needle)
-    # power_monitor_window.arc2_needle.setPixmap(rotated_needle)
+    MainWindow.arc1_val1.setPixmap(rotated_pixmap2)
+    if (angle2>0.7*270):
+        MainWindow.arc1_current_value.setStyleSheet("color: rgba(255, 57, 57, 210);")
+    elif(angle2<0.7*270 and not(angle2<0.4*270)):
+        MainWindow.arc1_current_value.setStyleSheet("color: rgba(255, 130 ,0, 210);")
+    else:
+        MainWindow.arc1_current_value.setStyleSheet("color: rgba(85, 255, 127, 210);")
+    MainWindow.arc1_current_value.setText(str(100*angle2//270))
+    set_arc_value(MainWindow.arc5_needle,MainWindow.arc5_current_value,MainWindow.arc5_min_value,MainWindow.arc5_mid_value,MainWindow.arc5_max_value,100*angle2//270,0,100)
+    set_arc_value(MainWindow.arc4_needle,MainWindow.arc4_current_value,MainWindow.arc4_min_value,MainWindow.arc4_mid_value,MainWindow.arc4_max_value,150*angle2//270,0,150)
+    set_arc_value(MainWindow.arc3_needle,MainWindow.arc3_current_value,MainWindow.arc3_min_value,MainWindow.arc3_mid_value,MainWindow.arc3_max_value,180*angle2//270,0,180)
+    set_arc_value(MainWindow.arc2_needle,MainWindow.arc2_current_value,MainWindow.arc2_min_value,MainWindow.arc2_mid_value,MainWindow.arc2_max_value,1000*angle2//270,50,1000)
     if (angle2 <=90):
-        power_monitor_window.arc1_val3.setPixmap(rotated_pixmap2)
+        MainWindow.arc1_val3.setPixmap(rotated_pixmap2)
     else:
         transform2 = QTransform().rotate(90)
         rotated_pixmap2 = arc1_val.transformed(transform2, Qt.SmoothTransformation)
-        power_monitor_window.arc1_val3.setPixmap(rotated_pixmap2)
+        MainWindow.arc1_val3.setPixmap(rotated_pixmap2)
     if (angle2 <=180):
-        power_monitor_window.arc1_val2.setPixmap(rotated_pixmap2)
+        MainWindow.arc1_val2.setPixmap(rotated_pixmap2)
     else:
         transform2 = QTransform().rotate(180)
         rotated_pixmap2 = arc1_val.transformed(transform2, Qt.SmoothTransformation)
-        power_monitor_window.arc1_val2.setPixmap(rotated_pixmap2)
+        MainWindow.arc1_val2.setPixmap(rotated_pixmap2)
     if(angle2<270 and not(decrement_flag)):
         angle2 = (angle2 +0.5) % 271
         decrement_flag = False
@@ -108,7 +111,7 @@ def rotate_arc_bar():
             decrement_flag = False
     previous_angle2 = angle2
 
-def set_arc_value(arc,arc_min_label,arc_mid_label,arc_max_label,current_val,min_val,max_val):
+def set_arc_value(arc,arc_current_value,arc_min_label,arc_mid_label,arc_max_label,current_val,min_val,max_val):
     if current_val<min_val:
         current_val=min_val
     percent = ((current_val-min_val)/(max_val-min_val))
@@ -120,14 +123,17 @@ def set_arc_value(arc,arc_min_label,arc_mid_label,arc_max_label,current_val,min_
     arc_min_label.setText(str(min_val))
     arc_max_label.setText(str(max_val))
     arc_mid_label.setText(str(mid_point))
+    if (current_val>0.7*max_val):
+        arc_current_value.setStyleSheet("color: rgba(255, 57, 57, 210);")
+    elif(current_val<0.7*max_val and not(current_val<0.4*max_val)):
+        arc_current_value.setStyleSheet("color: rgba(255, 130, 0, 210);")
+    else:
+        arc_current_value.setStyleSheet("color: rgba(85, 255, 127, 210);")
+    arc_current_value.setText(str(int(current_val)))
 
 
-fan_controller_window = loader.load("ui/Fan_Control.ui",None)
-power_monitor_window = loader.load("ui/arc test.ui",None)
+MainWindow = loader.load("ui/app.ui",None)
 
-current_page = fan_controller_window
-next_page = power_monitor_window
-previous_page = fan_controller_window
 position = 0
 right = True
 left = False
@@ -170,35 +176,36 @@ def move_screen():
             left = True
             # timer3.stop()
 
-fan_controller_window.setWindowTitle("Fan Control")
-fan_controller_window.fan_body.setPixmap(QPixmap("assests/fan_body.png"))
-fan_controller_window.fan_blade.setPixmap(blade)
-fan_controller_window.fan_button.clicked.connect(fan_button_click)
-fan_controller_window.ip_scan.clicked.connect(get_ip)
-fan_controller_window.dial.valueChanged.connect(fan_speed_control)
-fan_controller_window.next_page.clicked.connect(go_next)
+MainWindow.setWindowTitle("Fan Control and Power Monitor App")
+MainWindow.fan_body.setPixmap(QPixmap("assests/fan_body.png"))
+MainWindow.fan_blade.setPixmap(blade)
+MainWindow.fan_button.clicked.connect(fan_button_click)
+MainWindow.ip_scan.clicked.connect(get_ip)
+MainWindow.dial.valueChanged.connect(fan_speed_control)
+MainWindow.next_page.setIcon(QIcon.fromTheme("go-next"))
+MainWindow.next_page.clicked.connect(lambda: MainWindow.stackedWidget.setCurrentIndex(1))
 timer1 = QTimer()
 timer1.timeout.connect(rotate_fan_blade)
-fan_controller_window.show()
 
-power_monitor_window.setWindowTitle("Power Meter")
-power_monitor_window.arc1_body.setPixmap(QPixmap("assests/arc_body.png"))
-power_monitor_window.arc1_val1.setPixmap(arc1_val)
-power_monitor_window.arc1_val2.setPixmap(arc1_val)
-power_monitor_window.arc1_val3.setPixmap(arc1_val)
-power_monitor_window.arc5_body.setPixmap(QPixmap("assests/arc_body_simple.png"))
-power_monitor_window.arc4_body.setPixmap(QPixmap("assests/arc_body_brown.png"))
-power_monitor_window.arc3_body.setPixmap(QPixmap("assests/arc_body_purple.png"))
-power_monitor_window.arc2_body.setPixmap(QPixmap("assests/arc_body_black.png"))
-power_monitor_window.arc5_needle.setPixmap(arc_needle)
-power_monitor_window.arc4_needle.setPixmap(arc_needle)
-power_monitor_window.arc3_needle.setPixmap(arc_needle)
-power_monitor_window.arc2_needle.setPixmap(arc_needle)
-power_monitor_window.previous_page.clicked.connect(go_back)
+MainWindow.arc1_body.setPixmap(QPixmap("assests/arc_body.png"))
+MainWindow.arc1_val1.setPixmap(arc1_val)
+MainWindow.arc1_val2.setPixmap(arc1_val)
+MainWindow.arc1_val3.setPixmap(arc1_val)
+MainWindow.arc5_body.setPixmap(QPixmap("assests/arc_body_simple.png"))
+MainWindow.arc4_body.setPixmap(QPixmap("assests/arc_body_brown.png"))
+MainWindow.arc3_body.setPixmap(QPixmap("assests/arc_body_purple.png"))
+MainWindow.arc2_body.setPixmap(QPixmap("assests/arc_body_black.png"))
+MainWindow.arc5_needle.setPixmap(arc_needle)
+MainWindow.arc4_needle.setPixmap(arc_needle)
+MainWindow.arc3_needle.setPixmap(arc_needle)
+MainWindow.arc2_needle.setPixmap(arc_needle)
+MainWindow.previous_page.setIcon(QIcon.fromTheme("go-previous"))
+MainWindow.previous_page.clicked.connect(lambda: MainWindow.stackedWidget.setCurrentIndex(0))
+MainWindow.show()
+
 timer2 = QTimer()
 timer2.start(5)
 timer2.timeout.connect(rotate_arc_bar)
-power_monitor_window.hide()
 
 timer3 = QTimer()
 timer3.timeout.connect(move_screen)
