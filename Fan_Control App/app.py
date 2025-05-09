@@ -3,7 +3,7 @@ from PySide6.QtCore import *
 from PySide6.QtWidgets import *
 from PySide6.QtUiTools import *
 from PySide6.QtGui import *
-
+from ui.arc_meter import ArcMeter
 from modules.main import *
 import threading
 import time
