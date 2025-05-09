@@ -10,10 +10,7 @@ def nslookup(host):
     global ip_address
     ip_address = ""
     try:
-        # subprocess.run(["ipconfig", "/flushdns"], shell=True)
-        subprocess.run(["ipconfig", "/flushdns"], shell=True)
         result = subprocess.run(["nslookup", host], capture_output=True, text=True)
-        #print(result.stdout)
         ips = re.findall(r"Address:\s+(\d+\.\d+\.\d+\.\d+)", result.stdout)
         ip_address = ips[1]
         print(ip_address)
